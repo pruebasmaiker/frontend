@@ -1,12 +1,12 @@
 import { provideHttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter, Routes } from '@angular/router';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { PersonajeDetalleComponent } from './app/components/personaje-detalle/personaje-detalle.component';
 import { PersonajeListaComponent } from './app/components/personaje-lista/personaje-lista.component';
 import { ReportesComponent } from './app/components/reportes/reportes.component';
 
-const routes: Routes = [
+const routes = [
   { path: '', component: PersonajeListaComponent },
   { path: 'personaje/:id', component: PersonajeDetalleComponent },
   { path: 'reportes', component: ReportesComponent },
@@ -15,7 +15,7 @@ const routes: Routes = [
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withHashLocation()),
     // Agrega aquí otros providers como HttpClientModule si hace falta
     provideHttpClient()
   ]
